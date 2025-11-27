@@ -1,0 +1,3 @@
+{
+    "netlist": "V1 in 0 SIN(0 10 50)\nR1 in 1 1k\nR2 1 2 1k\nL1 2 0 1mH\nC1 1 0 6u\n.tran 20m 0 0.01m\n.END"
+}
