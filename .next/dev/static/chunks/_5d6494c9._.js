@@ -371,14 +371,23 @@ var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
-function SimpleLineChart({ data, label }) {
+const CLASS_COLORS = {
+    healthy: '#10b981',
+    E1: '#3b82f6',
+    E2: '#8b5cf6',
+    E3: '#f59e0b',
+    E4: '#ef4444',
+    E5: '#ec4899',
+    vin: '#334155'
+};
+function SimpleLineChart({ data, label, color = "hsl(var(--primary))" }) {
     if (!Array.isArray(data) || data.length === 0) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "h-64 bg-slate-50 rounded flex items-center justify-center text-muted-foreground",
             children: "No data"
         }, void 0, false, {
             fileName: "[project]/components/waveform-viewer.tsx",
-            lineNumber: 26,
+            lineNumber: 36,
             columnNumber: 7
         }, this);
     }
@@ -410,7 +419,7 @@ function SimpleLineChart({ data, label }) {
                     opacity: "0.2"
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 47,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -423,17 +432,17 @@ function SimpleLineChart({ data, label }) {
                     opacity: "0.2"
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 56,
+                    lineNumber: 66,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: pathD,
-                    stroke: "hsl(var(--primary))",
+                    stroke: color,
                     strokeWidth: "2",
                     fill: "none"
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 65,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
@@ -446,7 +455,7 @@ function SimpleLineChart({ data, label }) {
                     children: "Time (ms)"
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 66,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
@@ -460,18 +469,18 @@ function SimpleLineChart({ data, label }) {
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 69,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/waveform-viewer.tsx",
-            lineNumber: 46,
+            lineNumber: 56,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/waveform-viewer.tsx",
-        lineNumber: 45,
+        lineNumber: 55,
         columnNumber: 5
     }, this);
 }
@@ -491,7 +500,7 @@ function WaveformViewer({ waveforms }) {
                         children: "Input (Vin)"
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 91,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -499,7 +508,7 @@ function WaveformViewer({ waveforms }) {
                         children: "Output V0 (C1)"
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 92,
+                        lineNumber: 102,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -507,13 +516,13 @@ function WaveformViewer({ waveforms }) {
                         children: "Output V1 (R2)"
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 93,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/waveform-viewer.tsx",
-                lineNumber: 90,
+                lineNumber: 100,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -521,15 +530,16 @@ function WaveformViewer({ waveforms }) {
                 className: "space-y-4",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimpleLineChart, {
                     data: waveforms.vin || [],
-                    label: "Vin (V)"
+                    label: "Vin (V)",
+                    color: CLASS_COLORS.vin
                 }, void 0, false, {
                     fileName: "[project]/components/waveform-viewer.tsx",
-                    lineNumber: 97,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/waveform-viewer.tsx",
-                lineNumber: 96,
+                lineNumber: 106,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -547,30 +557,36 @@ function WaveformViewer({ waveforms }) {
                             "E5"
                         ].map((fault)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setSelectedFault(fault),
-                                className: `px-3 py-1 rounded text-sm transition ${selectedFault === fault ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-slate-300"}`,
+                                className: `px-3 py-1 rounded text-sm transition border ${selectedFault === fault ? "text-white" : "bg-white text-slate-700 hover:bg-slate-50"}`,
+                                style: {
+                                    backgroundColor: selectedFault === fault ? CLASS_COLORS[fault] : undefined,
+                                    borderColor: CLASS_COLORS[fault],
+                                    color: selectedFault === fault ? 'white' : CLASS_COLORS[fault]
+                                },
                                 children: fault
                             }, fault, false, {
                                 fileName: "[project]/components/waveform-viewer.tsx",
-                                lineNumber: 103,
+                                lineNumber: 113,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 101,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimpleLineChart, {
                         data: waveforms[`v0_${selectedFault}`] || [],
-                        label: "V0 (V)"
+                        label: `V0 - ${selectedFault}`,
+                        color: CLASS_COLORS[selectedFault]
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 116,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/waveform-viewer.tsx",
-                lineNumber: 100,
+                lineNumber: 110,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -588,36 +604,42 @@ function WaveformViewer({ waveforms }) {
                             "E5"
                         ].map((fault)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setSelectedFault(fault),
-                                className: `px-3 py-1 rounded text-sm transition ${selectedFault === fault ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-slate-300"}`,
+                                className: `px-3 py-1 rounded text-sm transition border ${selectedFault === fault ? "text-white" : "bg-white text-slate-700 hover:bg-slate-50"}`,
+                                style: {
+                                    backgroundColor: selectedFault === fault ? CLASS_COLORS[fault] : undefined,
+                                    borderColor: CLASS_COLORS[fault],
+                                    color: selectedFault === fault ? 'white' : CLASS_COLORS[fault]
+                                },
                                 children: fault
                             }, fault, false, {
                                 fileName: "[project]/components/waveform-viewer.tsx",
-                                lineNumber: 122,
+                                lineNumber: 140,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 120,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimpleLineChart, {
                         data: waveforms[`v1_${selectedFault}`] || [],
-                        label: "V1 (V)"
+                        label: `V1 - ${selectedFault}`,
+                        color: CLASS_COLORS[selectedFault]
                     }, void 0, false, {
                         fileName: "[project]/components/waveform-viewer.tsx",
-                        lineNumber: 135,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/waveform-viewer.tsx",
-                lineNumber: 119,
+                lineNumber: 137,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/waveform-viewer.tsx",
-        lineNumber: 89,
+        lineNumber: 99,
         columnNumber: 5
     }, this);
 }

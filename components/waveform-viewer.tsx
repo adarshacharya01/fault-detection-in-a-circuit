@@ -20,7 +20,17 @@ interface WaveformData {
   v1_E5: number[]
 }
 
-function SimpleLineChart({ data, label }: { data: number[]; label: string }) {
+const CLASS_COLORS: Record<string, string> = {
+  healthy: '#10b981', // E0 (Green)
+  E1: '#3b82f6', // Blue
+  E2: '#8b5cf6', // Purple
+  E3: '#f59e0b', // Amber
+  E4: '#ef4444', // Red
+  E5: '#ec4899', // Pink
+  vin: '#334155', // Slate-700
+}
+
+function SimpleLineChart({ data, label, color = "hsl(var(--primary))" }: { data: number[]; label: string; color?: string }) {
   if (!Array.isArray(data) || data.length === 0) {
     return (
       <div className="h-64 bg-slate-50 rounded flex items-center justify-center text-muted-foreground">No data</div>
@@ -62,7 +72,7 @@ function SimpleLineChart({ data, label }: { data: number[]; label: string }) {
           strokeWidth="1"
           opacity="0.2"
         />
-        <path d={pathD} stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
+        <path d={pathD} stroke={color} strokeWidth="2" fill="none" />
         <text x={width / 2} y={height - 5} textAnchor="middle" fontSize="12" fill="currentColor" opacity="0.6">
           Time (ms)
         </text>
@@ -94,7 +104,7 @@ export default function WaveformViewer({ waveforms }: { waveforms: WaveformData 
       </TabsList>
 
       <TabsContent value="vin" className="space-y-4">
-        <SimpleLineChart data={waveforms.vin || []} label="Vin (V)" />
+        <SimpleLineChart data={waveforms.vin || []} label="Vin (V)" color={CLASS_COLORS.vin} />
       </TabsContent>
 
       <TabsContent value="v0" className="space-y-4">
@@ -103,17 +113,25 @@ export default function WaveformViewer({ waveforms }: { waveforms: WaveformData 
             <button
               key={fault}
               onClick={() => setSelectedFault(fault)}
-              className={`px-3 py-1 rounded text-sm transition ${
-                selectedFault === fault
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-slate-300"
-              }`}
+              className={`px-3 py-1 rounded text-sm transition border ${selectedFault === fault
+                  ? "text-white"
+                  : "bg-white text-slate-700 hover:bg-slate-50"
+                }`}
+              style={{
+                backgroundColor: selectedFault === fault ? CLASS_COLORS[fault] : undefined,
+                borderColor: CLASS_COLORS[fault],
+                color: selectedFault === fault ? 'white' : CLASS_COLORS[fault]
+              }}
             >
               {fault}
             </button>
           ))}
         </div>
-        <SimpleLineChart data={waveforms[`v0_${selectedFault}`] || []} label="V0 (V)" />
+        <SimpleLineChart
+          data={waveforms[`v0_${selectedFault}` as keyof WaveformData] as number[] || []}
+          label={`V0 - ${selectedFault}`}
+          color={CLASS_COLORS[selectedFault]}
+        />
       </TabsContent>
 
       <TabsContent value="v1" className="space-y-4">
@@ -122,17 +140,25 @@ export default function WaveformViewer({ waveforms }: { waveforms: WaveformData 
             <button
               key={fault}
               onClick={() => setSelectedFault(fault)}
-              className={`px-3 py-1 rounded text-sm transition ${
-                selectedFault === fault
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-slate-300"
-              }`}
+              className={`px-3 py-1 rounded text-sm transition border ${selectedFault === fault
+                  ? "text-white"
+                  : "bg-white text-slate-700 hover:bg-slate-50"
+                }`}
+              style={{
+                backgroundColor: selectedFault === fault ? CLASS_COLORS[fault] : undefined,
+                borderColor: CLASS_COLORS[fault],
+                color: selectedFault === fault ? 'white' : CLASS_COLORS[fault]
+              }}
             >
               {fault}
             </button>
           ))}
         </div>
-        <SimpleLineChart data={waveforms[`v1_${selectedFault}`] || []} label="V1 (V)" />
+        <SimpleLineChart
+          data={waveforms[`v1_${selectedFault}` as keyof WaveformData] as number[] || []}
+          label={`V1 - ${selectedFault}`}
+          color={CLASS_COLORS[selectedFault]}
+        />
       </TabsContent>
     </Tabs>
   )

@@ -78,7 +78,6 @@
     --color-slate-50: #f8fafc;
     --color-slate-100: #f1f5f9;
     --color-slate-200: #e2e8f0;
-    --color-slate-300: #cad5e2;
     --color-slate-700: #314158;
     --color-slate-900: #0f172b;
     --color-slate-950: #020618;
@@ -133,7 +132,6 @@
       --color-slate-50: lab(98.1434% -.369549 -1.05968);
       --color-slate-100: lab(96.286% -.852466 -2.46847);
       --color-slate-200: lab(91.7353% -.998765 -4.76968);
-      --color-slate-300: lab(84.7652% -1.94535 -7.93337);
       --color-slate-700: lab(26.9569% -1.47018 -15.6993);
       --color-slate-900: lab(7.78673% 1.82346 -15.0537);
       --color-slate-950: lab(1.76974% 1.32743 -9.28855);
@@ -2091,6 +2089,10 @@
     }
   }
 
+  .text-slate-700 {
+    color: var(--color-slate-700);
+  }
+
   .text-white {
     color: var(--color-white);
   }
@@ -2793,8 +2795,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-slate-300:hover {
-      background-color: var(--color-slate-300);
+    .hover\:bg-slate-50:hover {
+      background-color: var(--color-slate-50);
     }
   }
 
